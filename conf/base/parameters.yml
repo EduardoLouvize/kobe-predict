@@ -1,0 +1,26 @@
+preparacao_dados:
+  test_size: 0.2
+  random_state: 13
+  selected_columns:
+    - lat
+    - lon
+    - minutes_remaining
+    - period
+    - playoffs
+    - shot_distance
+    - shot_made_flag
+
+aplicacao:
+  model_uri: "models:/modelo_final/2"  # Ajuste o versionamento se necessário
+  selected_columns:
+    - lat
+    - lon
+    - minutes_remaining
+    - period
+    - playoffs
+    - shot_distance
+    - shot_made_flag
+
+# Também é possível definir o run name para este pipeline via kedro-mlflow, por exemplo:
+mlflow:
+  run_name: "PipelineAplicacao"

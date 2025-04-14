@@ -1,0 +1,15 @@
+ipython>=8.10
+jupyterlab>=3.0
+kedro~=0.19.11
+kedro-datasets[tracking,pandas]
+notebook
+pyarrow
+pycaret[models,mlops]
+scikit-optimize
+kedro-mlflow
+streamlit
+seaborn
+
+
+
+

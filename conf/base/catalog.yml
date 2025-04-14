@@ -1,0 +1,88 @@
+# # Here you can define all your datasets by using simple YAML syntax.
+# #
+# # Documentation for this file format can be found in "The Data Catalog"
+# # Link: https://docs.kedro.org/en/stable/data/data_catalog.html
+
+# Dados de entrada (01_raw)
+dataset_kobe_dev:
+  type: pandas.ParquetDataset
+  filepath: data/01_raw/dataset_kobe_dev.parquet
+
+dataset_kobe_prod:
+  type: pandas.ParquetDataset
+  filepath: data/01_raw/dataset_kobe_prod.parquet
+
+# Saída intermediária (03_primary)
+data_filtered:
+  type: pandas.ParquetDataset
+  filepath: data/03_primary/data_filtered.parquet
+
+# Dados para modelagem (05_model_input)
+base_train:
+  type: pandas.ParquetDataset
+  filepath: data/05_model_input/base_train.parquet
+
+base_test:
+  type: pandas.ParquetDataset
+  filepath: data/05_model_input/base_test.parquet
+
+# Métricas e contadores (aparecerão no MLflow)
+# n_linhas:
+#   type: kedro_mlflow.io.metrics.MlflowMetricsHistoryDataset
+
+# n_colunas:
+#   type: kedro_mlflow.io.metrics.MlflowMetricsHistoryDataset
+
+tamanho_treino:
+  type: kedro_mlflow.io.metrics.MlflowMetricDataset
+
+tamanho_teste:
+  type: kedro_mlflow.io.metrics.MlflowMetricDataset
+
+# Saída: modelo final escolhido
+modelo_final:
+  type: kedro_mlflow.io.models.MlflowModelTrackingDataset
+  flavor: mlflow.sklearn
+  save_args:
+    registered_model_name: modelo_final
+  # filepath: data/06_models/modelo_final.pkl
+
+# Métricas
+log_loss_regressao:
+  type: kedro_mlflow.io.metrics.MlflowMetricDataset
+
+log_loss_regressao_json:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/07_model_output/log_loss_regressao_save.json
+
+log_loss_arvore:
+  type: kedro_mlflow.io.metrics.MlflowMetricDataset
+
+log_loss_arvore_json:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/07_model_output/log_loss_arvore_save.json
+
+f1_score_arvore:
+  type: kedro_mlflow.io.metrics.MlflowMetricDataset
+
+f1_score_arvore_json:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/07_model_output/f1_score_arvore_save.json
+
+
+# Saída dos resultados da aplicação (por exemplo, salvar na pasta de saída de modelos ou resultados)
+resultados_aplicacao:
+  type: pandas.ParquetDataset
+  filepath: data/07_model_output/resultados_aplicacao.parquet
+
+# Métricas calculadas na aplicação:
+log_loss_aplicacao:
+  type: kedro_mlflow.io.metrics.MlflowMetricDataset
+
+f1_score_aplicacao:
+  type: kedro_mlflow.io.metrics.MlflowMetricDataset
+
+
+metrics_aplicacao_json:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/07_model_output/metrics_aplicacao.json
