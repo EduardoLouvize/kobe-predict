@@ -21,7 +21,7 @@ O objetivo principal foi construir um preditor para classificar se um arremesso 
 
 1. Clone o repositório:
 ```bash
-git clone <url_do_seu_repositorio>
+git clone https://github.com/EduardoLouvize/kobe-predict
 cd kobe
 ```
 
@@ -140,10 +140,3 @@ Estratégia reativa: retreinar quando houver queda no desempenho ou detecção d
 
 Estratégia preditiva: retreinar periodicamente ou com base em volume acumulado de novos dados.
 
----
-
-### 8. Link para o Repositório
-
-> (Inserir o link real do GitHub/Bitbucket/GitLab aqui antes da entrega final)
-
----
